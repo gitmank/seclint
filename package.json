@@ -1,0 +1,23 @@
+{
+  "name": "seclint",
+  "version": "1.0.0",
+  "description": "security issues linter",
+  "main": "parser.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gitmank/seclint.git"
+  },
+  "keywords": ["code", "vulnerability", "detection"],
+  "author": "Manomay (@gitmank)",
+  "license": "GPL-3.0",
+  "bugs": {
+    "url": "https://github.com/gitmank/seclint/issues"
+  },
+  "homepage": "https://github.com/gitmank/seclint#readme",
+  "dependencies": {
+    "acorn": "^8.11.3"
+  }
+}
