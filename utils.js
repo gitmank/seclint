@@ -86,9 +86,51 @@ function detectHardcodedSecrets(node) {
   });
 }
 
+// detect unsafe type conversions
+const detectUnsafeTypeConversions = (node) => {
+  if (node.operator == "+" && node.left.type !== node.right.type) {
+    richConsole.log(
+      infoMessageTemplate,
+      node.loc.start.line,
+      "possible unsafe type conversion with + operator",
+    );
+  }
+  if (node.operator == "==") {
+    richConsole.log(
+      infoMessageTemplate,
+      node.loc.start.line,
+      "possible unsafe type conversion with ==, use === instead",
+    );
+  }
+  if (node.operator == "!=") {
+    richConsole.log(
+      infoMessageTemplate,
+      node.loc.start.line,
+      "possible unsafe type conversion with !=, use !== instead",
+    );
+  }
+};
+
+// detect potential truncation using bitwise OR operator
+const detectPotentialTruncation = function (node) {
+  if (
+    node.operator === "|" &&
+    (node.left.raw === "0" || node.right.raw === "0")
+  ) {
+    richConsole.log(
+      infoMessageTemplate,
+      node.loc.start.line,
+      "possible truncation detected using bitwise OR",
+    );
+  }
+  // Extend with other checks as needed
+};
+
 module.exports = {
   detectConsoleLogs,
   detectInputFieldAccess,
   detectEvalCalls,
   detectHardcodedSecrets,
+  detectUnsafeTypeConversions,
+  detectPotentialTruncation,
 };

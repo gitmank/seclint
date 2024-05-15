@@ -24,6 +24,11 @@ walk.simple(ast, {
     utils.detectEvalCalls(node);
   },
 
+  BinaryExpression(node) {
+    utils.detectUnsafeTypeConversions(node);
+    utils.detectPotentialTruncation(node);
+  },
+
   Literal(node) {
     // detect secret keys
     if (typeof node.value === "string") utils.detectHardcodedSecrets(node);

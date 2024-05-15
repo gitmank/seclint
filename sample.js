@@ -9,7 +9,8 @@ const hello = () => {
   console.log("Hello, World!");
 };
 
-let a = 5;
+let a = 5.5 + "hello";
+let b = a | 0;
 
 // const hello = () => {
 //   console.log("Hello, World!");
